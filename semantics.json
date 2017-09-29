@@ -3,7 +3,7 @@
     "label": "",
     "name": "data",
     "type": "text",
-    "optional" : true,
+    "optional": true,
     "widget": "kekule_editor"
   }
 ]

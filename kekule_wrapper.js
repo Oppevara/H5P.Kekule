@@ -5,14 +5,6 @@ function kekule_wrapper(el, mode, width, height) {
 	this._width = width || 800;
 	this._height = height || 600;
 
-	if (this.mode == "editor") {
-		this.applet = new Kekule.Editor.Composer(document);
-	} else {
-		this.applet = new Kekule.ChemWidget.Viewer2D(document);
-	}
-	this.applet.appendToElem(this.el);
-
-
 	Object.defineProperty(this, "data", {
 		'get' : function() {
 			var co = this.applet.getChemObj();
@@ -25,9 +17,10 @@ function kekule_wrapper(el, mode, width, height) {
 		}
 	});
 
-	this._sync_size = function(w, h) {
+	this._sync_size = function() {
 		this.el.style.with = this._width + "px";
 		this.el.style.height = this._height + "px";
+		if (typeof this.applet === "undefined") return;
 		this.applet.setDimension(this._width + "px", this._height + "px");
 	};
 
@@ -51,21 +44,19 @@ function kekule_wrapper(el, mode, width, height) {
 		}
 	});
 
-	this.add_data = function(data) {
-		var data = this.data;
-		console.log(data);
-	};
+	if (this.mode == "editor") {
+		this.applet = new Kekule.Editor.Composer(document);
+	} else {
+		this.applet = new Kekule.ChemWidget.Viewer2D(document);
+	}
 
-	this.rem_data = function(data) {
 
-	};
+	this.lazy_append = function() {
+		this.applet.appendToElem(this.el);
+		this._sync_size();
+	}.bind(this);
 
-	this.get_data_hull = function() {
-		var data = this.data;
-
-	};
-
-	this.width = this.width;
+	setTimeout(this.lazy_append, 0);
 }
 
 
