@@ -2,7 +2,7 @@
   "title": "Kekule",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 1,
+  "patchVersion": 3,
   "runnable": 1,
   "author": "Karli Raudsepp",
   "machineName": "H5P.Kekule",
@@ -15,9 +15,11 @@
     { "path": "h5p.js" }
   ],
   "preloadedCss": [ 
-    { "path": "kekule/themes/default/kekule.css" },
-    { "path": "kekule_wrapper.css" },
-    { "path": "style.css" } 
+    { "path": "kekule/themes/default/default.css" },
+    { "path": "kekule/themes/default/defaultColor.css" },
+    { "path": "kekule/themes/default/chemWidget.css" },
+    { "path": "kekule/themes/default/chemWidgetColor.css" },
+    { "path": "kekule_wrapper.css" }
   ],
   "editorDependencies": [ 
     { "machineName": "H5PEditor.KekuleEditor", "majorVersion": 1, "minorVersion": 0 } 

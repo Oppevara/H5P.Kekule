@@ -16,9 +16,9 @@ H5P.Kekule = (function ($) {
     el_applet_container.id = random_string();
 
     this.kekule = new kekule_wrapper(el_applet_container, "viewer");
-    try {
-      this.kekule.data = this.data.data;
-    } catch(ex) {}
+    var data = undefined;
+    try { data = this.data.data; } catch(ex) {}
+    this.kekule.data = data;
   };
  
   return C;

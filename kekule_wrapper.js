@@ -27,9 +27,9 @@ function kekule_wrapper(el, mode, width, height) {
 	this._sync_size = function() {
 		this.el.style.width = this._width + "px";
 		this.el.style.height = this._height + "px";
-		if (typeof this.applet === "undefined") return;
-		this.applet.setDimension(this._width + "px", this._height + "px");
 		window.top.dispatchEvent(new Event('resize'));
+		if (typeof this.applet === "undefined") return;
+		this.applet.setDimension(this._width + "px", this._height + "px");		
 	};
 
 	Object.defineProperty(this, "width", {
@@ -110,5 +110,6 @@ function kekule_wrapper(el, mode, width, height) {
 	}.bind(this);
 
 	setTimeout(this.lazy_append, 0);
+	console.log("hai");	
 	make_eventable(this);
 }
