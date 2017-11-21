@@ -110,6 +110,5 @@ function kekule_wrapper(el, mode, width, height) {
 	}.bind(this);
 
 	setTimeout(this.lazy_append, 0);
-	console.log("hai");	
 	make_eventable(this);
 }
