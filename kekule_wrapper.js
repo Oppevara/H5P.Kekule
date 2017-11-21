@@ -29,6 +29,7 @@ function kekule_wrapper(el, mode, width, height) {
 		this.el.style.height = this._height + "px";
 		if (typeof this.applet === "undefined") return;
 		this.applet.setDimension(this._width + "px", this._height + "px");
+		window.top.dispatchEvent(new Event('resize'));
 	};
 
 	Object.defineProperty(this, "width", {
@@ -68,6 +69,7 @@ function kekule_wrapper(el, mode, width, height) {
 			this.floater.remove();
 			this.floater = undefined;
 			this.editor = undefined;
+			this.raise_event("changed", this);
 		}.bind(this));
 
 		setTimeout(function() {
@@ -108,6 +110,5 @@ function kekule_wrapper(el, mode, width, height) {
 	}.bind(this);
 
 	setTimeout(this.lazy_append, 0);
+	make_eventable(this);
 }
-
-
