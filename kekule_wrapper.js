@@ -6,6 +6,7 @@ function kekule_wrapper(el, mode, width, height) {
 	this._height = height || 600;
 	this._data = undefined;
 
+
 	Object.defineProperty(this, "data", {
 		'get' : function() {
 			if (this.mode == "floater") return this._data;
@@ -27,7 +28,8 @@ function kekule_wrapper(el, mode, width, height) {
 	this._sync_size = function() {
 		this.el.style.width = this._width + "px";
 		this.el.style.height = this._height + "px";
-		window.top.dispatchEvent(new Event('resize'));
+		//window.top.dispatchEvent(new Event('resize'));
+		h5p_resize_all_instances();
 		if (typeof this.applet === "undefined") return;
 		this.applet.setDimension(this._width + "px", this._height + "px");		
 	};
